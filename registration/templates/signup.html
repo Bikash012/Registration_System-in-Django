@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #3498db; /* Background color for the entire page */
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            width: 300px; /* Adjust the width as needed */
+        }
+
+        .form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-top: 10px;
+            color: #333;
+        }
+
+        input {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px; /* Rounded corners for input fields */
+        }
+
+        button {
+            background-color: #2ecc71; /* Button color */
+            color: #fff;
+            padding: 12px;
+            border: none;
+            border-radius: 5px; /* Rounded corners for the button */
+            cursor: pointer;
+        }
+
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Additional styling for the login and signup links */
+        .login-link {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        /* Background color for the login and signup links */
+        .login-link a {
+            background-color: #ecf0f1;
+            padding: 8px;
+            border-radius: 5px;
+            display: inline-block;
+            color: #333;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form class="form" action="" method="post">
+            {% if error_messages.username_exists %}
+                <div class="alert alert-danger" role="alert" style="color: red;" >
+                    {{ error_messages.username_exists }}
+                </div>
+            {% endif %}  
+        
+            {% if error_messages.password_mismatch %}
+                <div class="alert alert-danger" role="alert" style="color: red;">
+                    {{ error_messages.password_mismatch }}
+                </div>
+            {% endif %}
+            {% csrf_token %}
+            <h2>Signup</h2>
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+
+            <button type="submit">Sign up</button>
+
+            <a href="{% url 'login1' %}">Already have an account</a>
+
+        </form>
+    </div>
+</body>
+</html>
