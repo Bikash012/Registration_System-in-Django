@@ -1,4 +1,4 @@
-# Registration_system
+# Registration_System-in-Django
 
 A Django project implementing a secure user registration system. This system includes user authentication features such as registration, login, and a protected home page for authenticated users.
 
